@@ -25,10 +25,10 @@ namespace Arcanoid_2021_v001.Model
             if (Bounds.IntersectsWith(rect)) //Если происходит столкновение
             {
                 //Вычисляем направление отскока
-                var padding = 20; //Отскок
+                var padding = 7; //Отскок
 
                 Velocity.Y = -Speed;
-                //Velocity.X -= Math.Sign(game.Paddle.Velocity.X);
+                Velocity.X -= Math.Sign(game.Paddle.Velocity.X);
 
                 if (cp.X < rect.Left + padding) Velocity.X = -Speed;
                 if (cp.X > rect.Right - padding) Velocity.X = Speed;
