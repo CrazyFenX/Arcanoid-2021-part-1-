@@ -20,6 +20,24 @@ namespace Arcanoid_2021_v001.Model
 
             var cp = new Point(Bounds.X + Bounds.Width / 2, Bounds.Y + Bounds.Height / 2); //Центр мяча
 
+            //обработка столкновения с блоками
+            for (int y = 0; y < game.Level.Cells.GetLength(1); y++)
+                for (int x = 0; x < game.Level.Cells.GetLength(0); x++)
+                    if (game.Level.Cells[x, y] != null)
+                    {
+                        Rectangle blockRect = game.GetBlockRect(x, y); //прямоугольник блока
+
+                        if (Bounds.IntersectsWith(blockRect)) //Если происходит столкновение
+                        {
+                            if (cp.Y < blockRect.Top + blockRect.Height / 2)
+                                Velocity.Y = -Speed;
+                            else
+                                Velocity.Y = Speed;
+                            game.Level.Cells[x, y].OnHit(x, y, game);
+                            break;
+                        }
+                    }
+
             //обработка столкновения с ракеткой
             var rect = game.Paddle.Bounds;
             if (Bounds.IntersectsWith(rect)) //Если происходит столкновение

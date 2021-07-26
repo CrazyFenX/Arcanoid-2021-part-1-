@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Brick.cs" />
     <Compile Include="Control\GamePanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -58,6 +59,8 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\GoldBrick.cs" />
+    <Compile Include="Model\Level.cs" />
     <Compile Include="Model\Ball.cs" />
     <Compile Include="Model\Game.cs" />
     <Compile Include="Model\Keyboard.cs" />

@@ -27,7 +27,16 @@ namespace Arcanoid_2021_v001
                 if (game.IsGameOver()) //Мяч потерян
                 {
                     tm.Stop();
-                    MessageBox.Show("Game over!");
+                    MessageBox.Show("Game over!"); //Сообщение об окончании игры
+                    game.InitLevel(); //Уровень начинается сначала
+                    tm.Start();
+                }
+
+                if (game.IsLevelCompleted()) //Уровень пройден
+                {
+                    tm.Stop();
+                    game.NextLevelNumber++; //Следующий уровень
+                    game.InitLevel(); //Начинается следующий уровень
                     tm.Start();
                 }
             };
